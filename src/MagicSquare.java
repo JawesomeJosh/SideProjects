@@ -7,13 +7,43 @@ public class MagicSquare {
 	
 	public MagicSquare() {
 		initializeMS();
-		this.totals = getTotals();
+		setTotals();
 	}
 	
 	public MagicSquare(int[][] array) {
 		this.magicsquare = array;
-		this.totals = getTotals();
+		setTotals();
 	}
+	
+	// getters and setters
+	
+	public int[][] getMS(){
+		return this.getMS();
+	}
+	
+	public int[] getTotals() {
+		return this.totals;
+	}
+	
+	public void setMS(int[][] array) {
+		this.magicsquare = array;
+		setTotals();
+	}
+	
+	public void setTotals() {
+		int[] result = new int[8];
+		result[0] = magicsquare[0][0] + magicsquare[0][1] + magicsquare[0][2];
+		result[1] = magicsquare[1][0] + magicsquare[1][1] + magicsquare[1][2];
+		result[2] = magicsquare[2][0] + magicsquare[2][1] + magicsquare[2][2];
+		result[3] = magicsquare[0][0] + magicsquare[1][0] + magicsquare[2][0];
+		result[4] = magicsquare[0][1] + magicsquare[1][1] + magicsquare[2][1];
+		result[5] = magicsquare[0][2] + magicsquare[1][2] + magicsquare[2][2];
+		result[6] = magicsquare[0][0] + magicsquare[1][1] + magicsquare[2][2];
+		result[7] = magicsquare[0][2] + magicsquare[1][1] + magicsquare[2][0];
+		this.totals = result;
+	}
+	
+	// other methods
 	
 	public void initializeMS() {
 		Scanner scan = new Scanner(System.in);
@@ -33,6 +63,7 @@ public class MagicSquare {
 				System.out.println("One element out of context, only int inclusive between 1-9 are allowed.");
 			}
 		}
+		scan.close();
 		this.magicsquare = array;
 	}
 	
@@ -58,18 +89,7 @@ public class MagicSquare {
 		return true;
 	}
 	
-	public int[] getTotals() {
-		int[] result = new int[8];
-		result[0] = magicsquare[0][0] + magicsquare[0][1] + magicsquare[0][2];
-		result[1] = magicsquare[1][0] + magicsquare[1][1] + magicsquare[1][2];
-		result[2] = magicsquare[2][0] + magicsquare[2][1] + magicsquare[2][2];
-		result[3] = magicsquare[0][0] + magicsquare[1][0] + magicsquare[2][0];
-		result[4] = magicsquare[0][1] + magicsquare[1][1] + magicsquare[2][1];
-		result[5] = magicsquare[0][2] + magicsquare[1][2] + magicsquare[2][2];
-		result[6] = magicsquare[0][0] + magicsquare[1][1] + magicsquare[2][2];
-		result[7] = magicsquare[0][2] + magicsquare[1][1] + magicsquare[2][0];
-		return result;
-	}
+	
 	
 	public String totals2String() {
 		StringBuilder result = new StringBuilder();
